@@ -1,0 +1,30 @@
+<form (ngSubmit)="submit()" [formGroup]="form" action="/off" autocomplete="off">
+  <div class="controls-container">
+    <h1>Welcome back!</h1>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput type="email" maxlength="50" />
+      <mat-error *ngIf="form.get('email')!.errors?.['required']">
+        This field is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        maxlength="16"
+      />
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+        <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')!.errors?.['required']">
+        This field is required.
+      </mat-error>
+    </mat-form-field>
+
+    <button [disabled]="form.invalid" mat-flat-button color="primary">Continue</button>
+  </div>
+</form>

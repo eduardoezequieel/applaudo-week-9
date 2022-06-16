@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="icon-container">
+    <ng-container *ngIf="data.type == 'info'">
+      <mat-icon [class]="data.type">info</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="data.type == 'success'">
+      <mat-icon [class]="data.type">check_circle</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="data.type == 'warning'">
+      <mat-icon [class]="data.type">error</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="data.type == 'error'">
+      <mat-icon [class]="data.type">cancel</mat-icon>
+    </ng-container>
+  </div>
+  <div class="body">
+    <div class="heading">
+      <h2 [class]="data.type">{{ data.type | titlecase }}</h2>
+    </div>
+    <div class="data">
+      <p>{{ data.message }}</p>
+    </div>
+  </div>
+  <button (click)="dismissAlert()" mat-icon-button color="accent">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-progress-bar color="accent" mode="determinate" [value]="progress"></mat-progress-bar>
