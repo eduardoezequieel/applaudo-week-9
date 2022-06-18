@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  height: calc(100% - 60px);
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+}
+
+.body {
+  width: calc(100% - 200px);
+  height: 100%;
+  padding: 20px;
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, max-content));
+    justify-content: center;
+    gap: 10px;
+  }
+}

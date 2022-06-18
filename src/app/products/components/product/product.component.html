@@ -1,0 +1,19 @@
+<div class="product">
+  <div class="image-container">
+    <img [src]="product?.image?.url!" />
+  </div>
+  <div class="body">
+    <h2>{{ product.name }}</h2>
+    <div class="body-container">
+      <div class="info">
+        <label
+          >Quantity: <b>{{ product.master.stock }}</b></label
+        >
+        <h1>{{ product.master.price | currency }}</h1>
+      </div>
+      <button mat-mini-fab color="accent">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

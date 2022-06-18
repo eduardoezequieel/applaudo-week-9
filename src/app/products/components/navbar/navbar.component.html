@@ -1,0 +1,21 @@
+<nav>
+  <div class="buttons">
+    <button mat-button color="primary">Home</button>
+    <button mat-button color="primary">Home</button>
+    <button mat-button color="primary">Home</button>
+  </div>
+  <div class="profile" [matMenuTriggerFor]="menu">
+    <mat-icon color="primary">account_circle</mat-icon>
+  </div>
+  <mat-menu #menu="matMenu">
+    <div class="profile-card">
+      <div class="profile-icon">
+        <mat-icon color="primary">account_circle</mat-icon>
+      </div>
+      <h3>Eduardo Rivera</h3>
+      <button mat-icon-button color="accent">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </mat-menu>
+</nav>
