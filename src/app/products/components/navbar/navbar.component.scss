@@ -7,26 +7,6 @@ nav {
   justify-content: space-between;
 }
 
-.profile {
-  width: 40px;
-  height: 40px;
-  background-color: $primary-color-lighter;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  @include transition;
-
-  &:hover {
-    background-color: $primary-color;
-
-    mat-icon {
-      color: $primary-color-lighter;
-    }
-  }
-}
-
 .profile-card {
   display: flex;
   align-items: center;

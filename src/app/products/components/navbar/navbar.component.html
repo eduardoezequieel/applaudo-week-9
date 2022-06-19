@@ -1,17 +1,46 @@
 <nav>
-  <div class="buttons">
+  <div class="buttons-left">
     <button mat-button color="primary" routerLink="/home">Home</button>
   </div>
-  <div class="profile" [matMenuTriggerFor]="menu">
-    <mat-icon color="primary">account_circle</mat-icon>
+  <div class="buttons-right">
+    <button
+      *ngIf="!isLoggedIn"
+      mat-icon-button
+      color="primary"
+      #tooltip="matTooltip"
+      matTooltip="Login"
+      routerLink="/auth/login"
+    >
+      <mat-icon>login</mat-icon>
+    </button>
+    <button
+      *ngIf="isLoggedIn"
+      mat-icon-button
+      color="primary"
+      [matMenuTriggerFor]="menu"
+      #tooltip="matTooltip"
+      matTooltip="Profile"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" #tooltip="matTooltip" matTooltip="Cart">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
   </div>
+
   <mat-menu #menu="matMenu">
     <div class="profile-card">
       <div class="profile-icon">
         <mat-icon color="primary">account_circle</mat-icon>
       </div>
-      <h3>Eduardo Rivera</h3>
-      <button mat-icon-button color="accent">
+      <h3>{{ user?.name }}</h3>
+      <button
+        #tooltip="matTooltip"
+        matTooltip="Log out"
+        (click)="logout()"
+        mat-icon-button
+        color="accent"
+      >
         <mat-icon>logout</mat-icon>
       </button>
     </div>

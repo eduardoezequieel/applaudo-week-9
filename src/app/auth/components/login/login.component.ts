@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Error } from 'src/app/core/interfaces/error';
 import { AlertService } from 'src/app/shared/services/alert.service';
@@ -28,7 +29,8 @@ export class LoginComponent {
   constructor(
     private fb: UntypedFormBuilder,
     private authService: AuthService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private route: Router
   ) {}
 
   submit(): void {
@@ -37,9 +39,9 @@ export class LoginComponent {
     };
 
     this.authService.login(body).subscribe({
-      next: (response) => {
+      next: () => {
         this.alertService.notify('success', 'Logged in successfully!').subscribe(() => {
-          console.log(response);
+          this.route.navigateByUrl('/products/home');
         });
       },
       error: (error: Error) => {

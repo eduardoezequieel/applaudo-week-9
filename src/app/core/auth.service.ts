@@ -12,8 +12,9 @@ export class AuthService {
 
   login(data: { data: User }): Observable<any> {
     return this.http.post<any>(environment.api + 'api/v1/users/login', data).pipe(
-      tap((response: { data: { token: string } }) => {
+      tap((response: { data: { token: string; user: User } }) => {
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
       }),
       catchError((error: Response) => {
         if (error.status == 401) {
@@ -23,5 +24,10 @@ export class AuthService {
         }
       })
     );
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 }
