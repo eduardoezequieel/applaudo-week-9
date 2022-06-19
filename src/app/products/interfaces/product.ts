@@ -1,9 +1,9 @@
 export interface Product {
   id: number;
   active: number;
-  category: category;
-  image: image;
-  master: master;
+  category?: category;
+  image?: image;
+  master?: master;
   description: string;
   name: string;
   slug: string;

@@ -1,3 +1,3 @@
-import { ProductEffects } from "./product.effects";
+import { ProductEffects } from './product.effects';
 
-export const EffectsArray: any[] = [ ProductEffects];
+export const EffectsArray: any[] = [ProductEffects];

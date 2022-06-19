@@ -24,4 +24,10 @@ export class ProductsService {
         })
       );
   }
+
+  getProduct(slug: string): Observable<{ data: Product; meta: Meta }> {
+    return this.http.get<{ data: Product; meta: Meta }>(
+      environment.api + `api/v1/products/${slug}?include=image_attachment.blob,category,master`
+    );
+  }
 }

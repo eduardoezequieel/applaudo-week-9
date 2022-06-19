@@ -41,8 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.storeSub.unsubscribe();
   }
 
-  log(e: PageEvent): void {
-    console.log(e);
+  changePage(e: PageEvent): void {
     this.store.dispatch(ProductActions.getProducts(e));
   }
 }

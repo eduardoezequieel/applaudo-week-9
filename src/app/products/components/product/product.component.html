@@ -3,13 +3,13 @@
     <img [src]="product?.image?.url!" />
   </div>
   <div class="body">
-    <h2>{{ product.name }}</h2>
+    <a [routerLink]="['/products/details', product.slug]">{{ product.name }}</a>
     <div class="body-container">
       <div class="info">
         <label
-          >Quantity: <b>{{ product.master.stock }}</b></label
+          >Stock: <b>{{ product.master?.stock }}</b></label
         >
-        <h1>{{ product.master.price | currency }}</h1>
+        <h1>{{ product.master?.price | currency }}</h1>
       </div>
       <button mat-mini-fab color="accent">
         <mat-icon>add</mat-icon>

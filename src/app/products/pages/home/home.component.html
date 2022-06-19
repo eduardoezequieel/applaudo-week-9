@@ -7,7 +7,7 @@
       [length]="pageProperties.length"
       [pageSize]="pageProperties.pageSize"
       [pageSizeOptions]="[5, 10, 15]"
-      (page)="log($event)"
+      (page)="changePage($event)"
       aria-label="Select page"
     >
     </mat-paginator>
