@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
@@ -19,9 +20,16 @@ import { appReducers } from '../app.reducer';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { EffectsArray } from './store/effects';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
-  declarations: [ProductsComponent, NavbarComponent, ProductComponent, HomeComponent],
+  declarations: [
+    ProductsComponent,
+    NavbarComponent,
+    ProductComponent,
+    HomeComponent,
+    ProductDetailsComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -36,6 +44,7 @@ import { EffectsArray } from './store/effects';
     SharedModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatTooltipModule,
   ],
   providers: [ProductsService],
 })
