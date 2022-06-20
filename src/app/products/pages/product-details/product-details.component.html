@@ -14,7 +14,13 @@
       <label
         >Stock: <b>{{ product.master?.stock }}</b></label
       >
-      <button mat-fab #tooltip="matTooltip" matTooltip="Add to cart">
+      <button
+        (click)="openDialog()"
+        *ngIf="product.master?.stock != 0"
+        mat-fab
+        #tooltip="matTooltip"
+        matTooltip="Add to cart"
+      >
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
     </div>

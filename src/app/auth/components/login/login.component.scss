@@ -1,3 +1,5 @@
+@import 'variables', 'mixins';
+
 .controls-container {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,15 @@
 
 h1 {
   margin-bottom: 10px;
+}
+
+a {
+  margin-top: 10px;
+  text-decoration: none;
+  color: black;
+  @include transition;
+
+  &:hover {
+    color: $primary-color;
+  }
 }

@@ -1,12 +1,11 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
@@ -24,6 +23,11 @@ import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { EffectsArray } from './store/effects';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { RequestsInterceptor } from '../core/http.interceptor';
+import { CartComponent } from './pages/cart/cart.component';
+import { CartDialog } from './components/product/cart-dialog';
+import { DeleteDialog } from './components/cart-item/delete-dialog';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     ProductComponent,
     HomeComponent,
     ProductDetailsComponent,
-    LogoutDialog
+    LogoutDialog,
+    DeleteDialog,
+    CartDialog,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     CommonModule,
@@ -49,8 +57,11 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     MatMenuModule,
     MatPaginatorModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
   ],
-  providers: [ProductsService],
+  providers: [
+    ProductsService,
+    { provide: HTTP_INTERCEPTORS, useClass: RequestsInterceptor, multi: true },
+  ],
 })
 export class ProductsModule {}

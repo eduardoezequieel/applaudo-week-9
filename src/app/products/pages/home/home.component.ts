@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import * as ProductActions from '../../store/actions/product.actions';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     previousPageIndex: 0,
   };
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.storeSub = this.store.subscribe((store) => {

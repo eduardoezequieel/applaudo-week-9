@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="heading">
+    <h1>Cart</h1>
+    <button
+      (click)="deleteCart()"
+      *ngIf="cart.items.length != 0"
+      mat-mini-fab
+      #tooltip="matTooltip"
+      matTooltip="Delete cart"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div class="cart-items" *ngIf="cart.items.length != 0">
+    <app-cart-item *ngFor="let item of cart.items" [cartProduct]="item"></app-cart-item>
+  </div>
+  <h2 *ngIf="cart.items.length == 0">No items on the cart yet</h2>
+  <div class="footer" *ngIf="cart.items.length != 0">
+    <button
+      *ngIf="cart.items.length != 0"
+      mat-mini-fab
+      #tooltip="matTooltip"
+      matTooltip="Complete order"
+      color="primary"
+    >
+      <mat-icon>check</mat-icon>
+    </button>
+    <h1>
+      Total: <b>{{ cart.total | currency }}</b>
+    </h1>
+  </div>
+</div>

@@ -4,15 +4,17 @@
   display: flex;
 }
 
-.sidebar {
-  width: 200px;
-  padding: 20px;
-}
-
 .body {
-  width: calc(100% - 200px);
+  width: 100%;
   height: 100%;
   padding: 20px;
+
+  .body-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
 
   .products {
     display: grid;

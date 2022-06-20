@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  Route,
   Router,
   RouterStateSnapshot,
-  UrlSegment,
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,15 +12,14 @@ import { StorageService } from '../storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class IsAuthenticatedGuard implements CanActivate {
+export class IsNotAuthenticatedGuard implements CanActivate {
   constructor(private storageService: StorageService, private route: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  
-    if (!this.storageService.isTokenExpired()) {
-      this.route.navigateByUrl('/products/home');
+    if (this.storageService.isTokenExpired()) {
+      this.route.navigateByUrl('/auth/login');
       return false;
     }
 

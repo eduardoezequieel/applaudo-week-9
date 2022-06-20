@@ -18,8 +18,6 @@ import { JwtModule } from '@auth0/angular-jwt';
     }),
     BrowserAnimationsModule,
   ],
-
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

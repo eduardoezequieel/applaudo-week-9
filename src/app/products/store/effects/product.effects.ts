@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -11,7 +12,8 @@ export class ProductEffects {
   constructor(
     private actions$: Actions,
     private productsService: ProductsService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {}
 
   loadProducts = createEffect(() =>
@@ -33,7 +35,7 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(ProductActions.getProductFromStore),
       withLatestFrom(this.store.select('products')),
-      mergeMap(([{slug}, products]) =>
+      mergeMap(([{ slug }, products]) =>
         of(EMPTY).pipe(
           map(() =>
             ProductActions.getProductFromStoreSuccess({
@@ -48,14 +50,14 @@ export class ProductEffects {
   loadProduct = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.getProduct),
-      mergeMap(({slug}) =>
-        this.productsService
-          .getProduct(slug)
-          .pipe(
-            map(({data}) =>
-              ProductActions.getProductSuccess({ product: data })
-            )
-          )
+      mergeMap(({ slug }) =>
+        this.productsService.getProduct(slug).pipe(
+          map(({ data }) => ProductActions.getProductSuccess({ product: data })),
+          catchError(() => {
+            this.router.navigateByUrl('/products');
+            throw 'error';
+          })
+        )
       )
     )
   );

@@ -1,0 +1,18 @@
+<div class="cart-item">
+  <div class="data">
+    <h3>{{ cartProduct.name }}</h3>
+    <p>{{ cartProduct.description }}</p>
+    <p>
+      Selected: <b>{{ cartProduct.quantity }}</b>
+    </p>
+    <p>
+      Price: <b>{{ cartProduct.price | currency }}</b>
+    </p>
+    <p>
+      Total: <b>{{ cartProduct.total | currency }}</b>
+    </p>
+  </div>
+  <button (click)="deleteItem()" mat-mini-fab #tooltip="matTooltip" matTooltip="Delete from cart">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

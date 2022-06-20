@@ -1,0 +1,16 @@
+@import 'variables', 'mixins', 'keyframes';
+
+.cart-item {
+  padding-block: 20px;
+  padding-inline: 30px;
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 10px;
+  width: auto;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  animation-name: fadeInLeft;
+  animation-duration: 1s;
+}
