@@ -1,6 +1,11 @@
 # ApplaudoWeek9
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0. Application that implements https://trainee-program-api.applaudostudios.com/ as API, simple store made with redux, you can only add products to the cart and manipulate them sadly :( (You need to log in first in order to do that).
+
+<img src="./src/assets/img/1.png">
+<img src="./src/assets/img/2.png">
+<img src="./src/assets/img/3.png">
+<img src="./src/assets/img/4.png">
 
 ## Development server
 
